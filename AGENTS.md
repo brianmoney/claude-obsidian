@@ -6,17 +6,18 @@ Originally built for Claude Code, the skills now follow the cross-platform Agent
 
 ## Skills Discovery
 
-All skills live in `skills/<name>/SKILL.md`. Codex / OpenCode / other Agent Skills compatible agents will auto-discover them when you symlink the directory:
+Canonical skills live in `skills/<name>/SKILL.md`.
+
+OpenCode works from a fresh clone because this repo includes project-local wrappers in `.agents/skills/<name>/SKILL.md` plus `.opencode/commands/*.md` for the main slash-command workflows.
+
+For agents that expect a global skill install, symlink the canonical `skills/` directory:
 
 ```bash
 # Codex CLI
 ln -s "$(pwd)/skills" ~/.codex/skills/claude-obsidian
-
-# OpenCode
-ln -s "$(pwd)/skills" ~/.opencode/skills/claude-obsidian
 ```
 
-Or run the bundled installer:
+Or run the bundled installer for agents that still need that wiring:
 
 ```bash
 bash bin/setup-multi-agent.sh

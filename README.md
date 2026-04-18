@@ -48,7 +48,7 @@ Most Obsidian AI plugins are chat interfaces - they answer questions about your 
 | **Session memory** | Hot cache persists between conversations | No | No |
 | **Vault maintenance** | 8-category lint (orphans, dead links, gaps) | No | No |
 | **Autonomous research** | 3-round web research with gap-filling | No | No |
-| **Multi-model support** | Claude, Gemini, Codex, Cursor, Windsurf | Claude only | Multiple |
+| **Multi-model support** | Claude, OpenCode, Gemini, Codex, Cursor, Windsurf | Claude only | Multiple |
 | **Visual canvas** | Via [claude-canvas](https://github.com/AgriciDaniel/claude-canvas) companion | No | No |
 | **Query with citations** | Cites specific wiki pages | Cites similar notes | Cites notes |
 | **Batch ingestion** | Parallel agents for multiple sources | No | No |
@@ -70,9 +70,15 @@ bash bin/setup-vault.sh
 
 Open the folder in Obsidian: **Manage Vaults → Open folder as vault → select `claude-obsidian/`**
 
-Open Claude Code in the same folder. Type `/wiki`.
+Open Claude Code or OpenCode in the same folder. Type `/wiki`.
 
 > `setup-vault.sh` configures `graph.json` (filter + colors), `app.json` (excludes plugin dirs), and `appearance.json` (enables CSS). Run it once before the first Obsidian open. You get the fully pre-configured graph view, color scheme, and wiki structure out of the box.
+
+### OpenCode (project-local, zero setup)
+
+Open the same folder in OpenCode and run `/wiki`, `/save`, `/autoresearch`, or `/canvas`.
+
+This repo ships project-local OpenCode command wrappers in `.opencode/commands/` and project-local skill wrappers in `.agents/skills/`, so a fresh clone works without any separate OpenCode install step.
 
 ---
 
@@ -289,6 +295,10 @@ claude-obsidian/
 ├── .claude-plugin/
 │   ├── plugin.json              # manifest
 │   └── marketplace.json         # distribution
+├── .agents/
+│   └── skills/                  # project-local skill wrappers for OpenCode and similar agents
+├── .opencode/
+│   └── commands/                # project-local OpenCode slash command wrappers
 ├── skills/
 │   ├── wiki/                    # orchestrator + references (7 ref files)
 │   ├── wiki-ingest/             # INGEST operation
