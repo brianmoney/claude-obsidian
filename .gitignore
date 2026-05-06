@@ -28,6 +28,15 @@ __pycache__/
 # Node
 node_modules/
 
+# Local OpenSpec workspace
+openspec/
+
+# Local OpenSpec-generated OpenCode helpers.
+# Keep this narrow so real project OpenCode files like `.opencode/commands/`
+# can still be committed for the upstream PR.
+.opencode/command/
+.opencode/skills/openspec-*/
+
 # Local secrets
 .env
 .env.local
